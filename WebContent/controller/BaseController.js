@@ -3,7 +3,7 @@ sap.ui.define([
 	"sap/ui/core/routing/History"
 ], function (Controller, History) {
 	"use strict";
-	return Controller.extend("sap.ui.demo.nav.controller.BaseController", {
+	return Controller.extend("com.sap.controller.BaseController", {
 		getRouter : function () {
 			return sap.ui.core.UIComponent.getRouterFor(this);
 		},
@@ -14,7 +14,7 @@ sap.ui.define([
 			if (sPreviousHash !== undefined) {
 				window.history.go(-1);
 			} else {
-				this.getRouter().navTo("appHome", {}, true /*no history*/);
+				this.getRouter().navTo("logonPage", {}, true /*no history*/);
 			}
 		}
 	});

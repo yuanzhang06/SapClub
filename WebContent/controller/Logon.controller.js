@@ -1,27 +1,49 @@
 sap.ui.define([
-	"sap/ui/demo/mr/controller/BaseController",
+	"com/sap/controller/BaseController",
 	"sap/m/MessageToast",
 	"sap/ui/model/Filter",
 	"sap/ui/model/json/JSONModel",
     "sap/ui/model/FilterOperator"
 ], function(BaseController, MessageToast, Filter, JSONModel, FilterOperator){
 	"use strict";
-	return BaseController.extend("sap.ui.demo.mr.controller.Logon", {
-	
-		
-		
+	return BaseController.extend("com.sap.controller.Logon", {
+		onInit : function(){
+			// set model
+		/*	var oInfo = {
+				"name" : "",
+				"pw" : ""
+			};
+			
+			this.getView().setModel(new JSONModel(oInfo),"INFO");*/
+			
+			// attach handlers for validation errors
+			sap.ui.getCore().attachValidationError(function (oEvent) {
+				var control = oEvent.getParameter("element");
+				if (control && control.setValueState) {
+					control.setValueState("Error");
+				}
+			});
+			sap.ui.getCore().attachValidationSuccess(function (oEvent) {
+				var control = oEvent.getParameter("element");
+				if (control && control.setValueState) {
+					control.setValueState("None");
+				}
+			});
+		},
 		onNavMain : function(){
-			this.getRouter().navTo("ClubList");
+			this.getRouter().navTo("logonPage");
 		},
-			onRegister : function(){
-			this.getRouter().navTo("Register");
-		},
-		
 		onLogon : function(oEvent){
 			this.getView().getController().onCheck(oEvent);
 		},
-		
-		
+		onSuccess : function(oData){
+			if(oData.results.length == 1){
+				MessageToast.show("Welcome: " + oData.results[0].Name);
+				this.getView().getController().onNavMain();
+			}else{
+				MessageToast.show("Username or Password error!");
+			}
+		},
 		onCheck : function(oEvent){
 			var view = this.getView();
 			var inputs = [
@@ -35,15 +57,12 @@ sap.ui.define([
 				if (!input.getValue()) {
 					input.setValueState("Error");
 				}
-				else {
-				    input.setValueState("Success");
-				}
 			});
 			
 			// check states of inputs
 			var canContinue = true;
 			jQuery.each(inputs, function (i, input) {
-				if (input.getValueState() === "Error") {
+				if ("Error" === input.getValueState()) {
 					canContinue = false;
 					return false;
 				}
@@ -52,27 +71,20 @@ sap.ui.define([
 			if(canContinue){
 				var name = this.getView().byId("nameInput").getValue();
 				var pw = this.getView().byId("pwInput").getValue();
-			
-				var oModel = this.getView().getModel("Club");
+				var that = this.onSuccess;
+				var oModel = sap.ui.getCore().byId("clubCom").getComponentInstance().getModel("SAPCLUB");
 				var aFilter = [];
 				aFilter.push(new Filter("Name", FilterOperator.EQ, name));
 				aFilter.push(new Filter("Password", FilterOperator.EQ, pw));
 				var mParameters = {
 						filters : aFilter,
-						success : function(oData){
-							if(oData.results.length === 1){
-								MessageToast.show("Welcome: " + oData.results[0].Name);
-								view.getController().onNavMain();
-							}else{
-								MessageToast.show("Username or Password error!");
-							}
-						},
+						success : that.bind(this),
 						error : function(oError){
 							MessageToast.show(oError);
 						}
 				};
 				
-				oModel.read("/User", mParameters);
+				oModel.read('/User', mParameters);
 			}
 		}
     

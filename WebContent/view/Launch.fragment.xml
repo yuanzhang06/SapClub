@@ -1,0 +1,100 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+   <Dialog
+      title="launch activity">
+   	 <content>
+    <Label  text="activity:" width="100%" textAlign="Begin"></Label>
+      <InputBase textAlign="Left" 
+							width="100%" type="Text" 
+							valueLiveUpdate="true"
+							valueStateText="Name must not be empty."
+							value="{
+								path : 'launch>/Activity_Id',
+								type : 'sap.ui.model.type.String',
+								constraints : {
+									minLength: 1
+								}}"
+							placeholder="Enter activity ..." ></InputBase>
+	
+    <Label  text="Club_Name:" width="100%" textAlign="Begin"></Label>
+      <InputBase textAlign="Left" 
+							width="100%" type="Text" 
+					 		valueLiveUpdate="true"
+							value="{
+								path : 'launch>/Club_Name',
+								type : 'sap.ui.model.type.String',
+								constraints : {
+									minLength: 1
+								}}"
+							valueStateText="Club_Name must not be empty."
+							placeholder="Enter Club_Name ..." ></InputBase> 
+	<Label  text="Start_Time:" width="100%" textAlign="Begin"></Label>
+      <DateTimeInput textAlign="Left" 
+						 type="TextArea" 
+						 width="100%"
+						 height="100%"
+							rows="20" cols="50"
+							value="{
+								path : 'launch>/Start_Time',
+								type : 'sap.ui.model.type.String',
+								constraints : {
+									minLength: 1
+								}}"
+							valueLiveUpdate="true"
+							valueStateText="Start_Time must not be empty."
+							placeholder="Enter Start_time ..." ></DateTimeInput>
+	<Label  text="End_Time:" width="100%" textAlign="Begin"></Label>
+      <DateTimeInput textAlign="Left" 
+						 type="TextArea" 
+						 width="100%"
+						 height="100%"
+							rows="20" cols="50"
+							value="{
+								path : 'launch>/End_Time',
+								type : 'sap.ui.model.type.String',
+								constraints : {
+									minLength: 1
+								}}"
+							valueLiveUpdate="true"
+							valueStateText="End_Time must not be empty."
+							placeholder="Enter End_time ..." ></DateTimeInput>
+	<Label  text="Location:" width="100%" textAlign="Begin"></Label>
+      <InputBase textAlign="Left" 
+						 type="TextArea" 
+						 width="100%"
+						 height="100%"
+							rows="20" cols="50"
+							value="{
+								path : 'launch>/Location',
+								type : 'sap.ui.model.type.String',
+								constraints : {
+									minLength: 1
+								}}"
+							valueLiveUpdate="true"
+							valueStateText="Location must not be empty."
+							placeholder="Enter DZLocation ..." ></InputBase>	
+	<Label  text="TotalAmount:" width="100%" textAlign="Begin"></Label>
+      <InputBase textAlign="Left" 
+						 type="TextArea" 
+						 width="100%"
+						 height="100%"
+							rows="20" cols="50"
+							value="{
+								path : 'launch>/TotalAmount',
+								type : 'sap.ui.model.type.String',
+								constraints : {
+									minLength: 1
+								}}"
+							valueLiveUpdate="true"
+							valueStateText="TotalAmount must not be empty."
+							placeholder="Enter TotalAmount ..." ></InputBase>								
+      </content>
+      
+   	<beginButton>
+         <Button
+            text="save"
+            press="onCloseDialog"/>
+      </beginButton>
+   </Dialog>
+</core:FragmentDefinition>

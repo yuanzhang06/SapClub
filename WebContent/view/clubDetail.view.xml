@@ -1,0 +1,79 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:fb="sap.ui.comp.filterbar" controllerName="com.sap.controller.clubDetail"
+	xmlns="sap.m">
+	<SplitApp id="SplitAppDemo" initialDetail="detail"
+		initialMaster="master">
+		<detailPages>
+			<Page showFooter="false"  showHeader="true" title="Club Detail" 
+				titleLevel="H1">
+				<content>
+				    <Panel id="clubdetail">
+				        <content>
+				               <Label text="Club Name" />
+                              <Input value="{SAPCLUB>Club_Name}" />
+
+                              <Label text="Description" />
+                              <Input value="{SAPCLUB>Description}" />
+                              <Label text="Budget" />
+                              <Input value="{SAPCLUB>Budget}" />
+				      
+					<Table id="idCustomerUser" items="{SAPCLUB>ClubActivities}"  headerText="Activities" >
+						<columns>
+							
+							<Column id="activity">
+							    <Text text="Activity" />
+							</Column>
+							<Column id="joinin">
+							    <Text text="Action" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									
+								    <Text text="{SAPCLUB>Location}" />
+								    <Button text="Join in" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					 <Button class="myCustomButton" text="Launch Activity" press="onOpenDialog" />
+					  </content>
+				    </Panel>
+				</content>
+			</Page>
+			
+		
+		</detailPages>
+		
+		<masterPages>
+			<Page showFooter="false" showHeader="true" title="Club"
+				titleLevel="H1" >
+				<content>
+					<Table id="idCustomers" headerText="Club List">
+						<columns>
+							<Column id="nameCol2">
+								<Text text="Name" />
+							</Column>
+
+							<Column id="ActionCol2">
+								<Text text="" />
+							</Column>
+						</columns>
+						<!--<items>-->
+						<!--	<ColumnListItem id="columnListItem" press=".onItemSelected" -->
+						<!--		type="Active">-->
+						<!--		<cells>-->
+						<!--			<Text text="{Club>Club_Name}"  />-->
+								
+						<!--			<Button text="Join" visible="true" />-->
+						<!--		</cells>-->
+						<!--	</ColumnListItem>-->
+						<!--</items>-->
+					</Table>
+				</content>
+			</Page>
+		</masterPages>
+	</SplitApp>
+</mvc:View>

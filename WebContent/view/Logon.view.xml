@@ -1,6 +1,6 @@
-<mvc:View controllerName="sap.ui.demo.mr.controller.Logon" xmlns="sap.m"
+<mvc:View controllerName="com.sap.controller.Logon" xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" displayBlock="true">
-	<Page title="{i18n>appTitle}">
+	<Page title="Logon" showNavButton="true" navButtonPress="onNavBack">
 		<content>
 			<l:Grid class="sapUiSmallMarginTop" hSpacing="2">
 				<l:content>
@@ -16,7 +16,7 @@
 							valueStateText="Name must not be empty."
 							placeholder="Enter Your Name ..." 
 							value="{
-								path : 'Logon_Info>/name',
+								path : 'INFO>/name',
 								type : 'sap.ui.model.type.String',
 								constraints : {
 									minLength: 1,
@@ -37,7 +37,7 @@
 							valueLiveUpdate="true"
 							valueStateText="Password must not be empty."
 							value="{
-								path : 'Logon_Info>/password',
+								path : 'INFO>/pw',
 								type : 'sap.ui.model.type.String',
 								constraints : {
 									minLength: 1
@@ -46,12 +46,12 @@
 							<l:GridData linebreakS="true" span="L10 M10 S12" />
 						</layoutData>
 					</Input>
-					<Button text="Logon" width="100%" type="Emphasized" press="onLogon">
+					<Button text="logon" width="100%" type="Emphasized" press="onLogon">
 						<layoutData>
 							<l:GridData linebreak="true" span="L12 M12 S12"/>
 						</layoutData>
 					</Button>
-					<Link text="Register" width="100%" press="onRegister" textAlign="Center">
+					<Link text="register" width="100%" press="onRegister" textAlign="Center">
 						<layoutData>
 							<l:GridData linebreak="true" span="L12 M12 S12"/>
 						</layoutData>
