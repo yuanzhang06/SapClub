@@ -1,0 +1,63 @@
+<mvc:View controllerName="sap.ui.demo.mr.controller.Logon" xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" displayBlock="true">
+	<Page title="{i18n>appTitle}">
+		<content>
+			<l:Grid class="sapUiSmallMarginTop" hSpacing="2">
+				<l:content>
+					<Label text="User Name:" width="100%" textAlign="Begin">
+						<layoutData>
+							<l:GridData linebreak="true"
+								span="L2 M2 S12" />
+						</layoutData>
+					</Label>
+					<Input id="nameInput" textAlign="Left" 
+							width="100%" type="Text" 
+							valueLiveUpdate="true"
+							valueStateText="Name must not be empty."
+							placeholder="Enter Your Name ..." 
+							value="{
+								path : 'Logon_Info>/name',
+								type : 'sap.ui.model.type.String',
+								constraints : {
+									minLength: 1,
+									maxLength: 20
+								}}">
+						<layoutData>
+							<l:GridData linebreakS="true" span="L10 M10 S12" />
+						</layoutData>
+					</Input>
+					<Label text="Password:" width="100%" textAlign="Begin">
+						<layoutData>
+							<l:GridData linebreak="true" span="L2 M2 S12"/>
+						</layoutData>
+					</Label>
+					<Input id="pwInput" textAlign="Left" 
+							width="100%" type="Password" 
+							placeholder="Enter Password ..."
+							valueLiveUpdate="true"
+							valueStateText="Password must not be empty."
+							value="{
+								path : 'Logon_Info>/password',
+								type : 'sap.ui.model.type.String',
+								constraints : {
+									minLength: 1
+								}}">
+						<layoutData>
+							<l:GridData linebreakS="true" span="L10 M10 S12" />
+						</layoutData>
+					</Input>
+					<Button text="Logon" width="100%" type="Emphasized" press="onLogon">
+						<layoutData>
+							<l:GridData linebreak="true" span="L12 M12 S12"/>
+						</layoutData>
+					</Button>
+					<Link text="Register" width="100%" press="onRegister" textAlign="Center">
+						<layoutData>
+							<l:GridData linebreak="true" span="L12 M12 S12"/>
+						</layoutData>
+					</Link>
+				</l:content>
+			</l:Grid>
+		</content>
+	</Page>
+</mvc:View>

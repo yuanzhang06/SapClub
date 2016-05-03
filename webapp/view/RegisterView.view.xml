@@ -1,0 +1,110 @@
+<mvc:View controllerName="sap.ui.demo.mr.controller.RegisterView" xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" displayBlock="true">
+	<Page title="Register" showNavButton="true" navButtonPress="onNavBack">
+		<content>
+			<l:Grid class="sapUiSmallMarginTop" hSpacing="2">
+				<l:content>
+				
+				
+					<Label text="Name:" width="100%" textAlign="Begin">
+						<layoutData>
+							<l:GridData linebreak="true" span="L2 M2 S12"/>
+						</layoutData>
+					</Label>
+					<Input id="nameinput" textAlign="Left" 
+							width="100%" type="Text" 
+							placeholder="Enter Your Last Name ..."
+							value="{Regis_Info>/name}"
+							valueLiveUpdate="true"
+							valueStateText=" Name must not be empty."
+						
+							>
+						<layoutData>
+							<l:GridData linebreakS="true" span="L10 M10 S12" />
+						</layoutData>
+					</Input>
+						
+					<Label text="E-mail:" width="100%" textAlign="Begin">
+						<layoutData>
+							<l:GridData linebreak="true" span="L2 M2 S12"/>
+						</layoutData>
+					</Label>
+					<Input id="emailinput" textAlign="Left" 
+							width="100%" type="Text" 
+							placeholder="Enter Your E-mail Address..."
+							value=
+							
+							"{
+							path: 'Regis_Info>/email' }"
+							
+							
+							valueLiveUpdate="true"
+							valueStateText="mail must not be empty."
+							>
+						<layoutData>
+							<l:GridData linebreakS="true" span="L10 M10 S12" />
+						</layoutData>
+					</Input>
+					
+					<Label text="WeiXin:" width="100%" textAlign="Begin">
+						<layoutData>
+							<l:GridData linebreak="true" span="L2 M2 S12"/>
+						</layoutData>
+					</Label>
+					<Input id="weixininput" textAlign="Left" 
+							width="100%" type="Text" 
+							value="{Regis_Info>/weixin}"
+							valueLiveUpdate="true"
+							placeholder="Enter Your WeiXin Number ..."
+							valueStateText="UserName must not be empty."
+							>
+						<layoutData>
+							<l:GridData linebreakS="true" span="L10 M10 S12" />
+						</layoutData>
+					</Input>
+					
+						<Label text="Alipay:" width="100%" textAlign="Begin">
+						<layoutData>
+							<l:GridData linebreak="true" span="L2 M2 S12"/>
+						</layoutData>
+					</Label>
+					<Input id="alipayinput" textAlign="Left" 
+							width="100%" type="Text" 
+							placeholder="Enter Your Alipay Number ..."
+							value="{Regis_Info>/alipay}"
+							valueLiveUpdate="true"
+							valueStateText="Alipay Number must not be empty."
+							>
+						<layoutData>
+							<l:GridData linebreakS="true" span="L10 M10 S12" />
+						</layoutData>
+					</Input>
+					
+					<Label text="password:" width="100%" textAlign="Begin">
+						<layoutData>
+							<l:GridData linebreak="true" span="L2 M2 S12"/>
+						</layoutData>
+					</Label>
+					<Input id="pswinput" textAlign="Left" 
+							width="100%" type="Password" 
+						value="{Regis_Info>/password}"
+							valueLiveUpdate="true"
+							placeholder="Set Your Password ..."
+							valueStateText="psw must not be empty."
+							>
+						<layoutData>
+							<l:GridData linebreakS="true" span="L10 M10 S12" />
+						</layoutData>
+					</Input>
+					
+					<Button text="Confirm" width="100%" type="Emphasized" press="onCheck">
+						<layoutData>
+							<l:GridData linebreak="true" span="L12 M12 S12"/>
+						</layoutData>
+					</Button>
+					
+				</l:content>
+			</l:Grid>
+		</content>
+	</Page>
+</mvc:View>
